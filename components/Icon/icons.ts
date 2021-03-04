@@ -22,3 +22,4 @@ export { ReactComponent as wand } from "./svg/magic-wand.svg";
 export { ReactComponent as note } from "./svg/note.svg";
 export { ReactComponent as presentation } from "./svg/presentation.svg";
 export { ReactComponent as stack } from "./svg/stack.svg";
+export { ReactComponent as kubernetes } from "./svg/kubernetes.svg";
