@@ -6,7 +6,7 @@ const Image = (props: ImageProps) => {
   const height = parseInt(props.height as string, 10);
 
   return (
-    <Box mb={[2, 3]}>
+    <Box my={["8px", "12px"]}>
       <NextImage
         {...props}
         width={width}

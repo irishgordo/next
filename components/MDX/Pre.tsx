@@ -36,7 +36,7 @@ const Pre = ({ children }: CodeProps) => {
       position="relative"
       bg="#272822"
       borderRadius="default"
-      mb={3}
+      my={["8px", "12px"]}
       css={css({
         "&:hover button": {
           display: "flex",
@@ -51,7 +51,7 @@ const Pre = ({ children }: CodeProps) => {
         position="absolute"
         top={0}
         right={0}
-        p={2}
+        p="8px"
         color="dark-gray"
         bg="#272822"
         css={css({

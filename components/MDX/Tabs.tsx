@@ -85,7 +85,7 @@ export const Tabs = ({ children }: TabsProps) => {
       bg="white"
       boxShadow="0 1px 4px rgba(0,0,0,.24)"
       borderRadius="default"
-      mb={[2, 3]}
+      my={["8px", "12px"]}
     >
       <Flex bg="lightest-gray" overflowX="auto" height="40px">
         {labels.map((label) => (

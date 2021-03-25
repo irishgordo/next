@@ -9,12 +9,15 @@ interface IFrameProps {
 const IFrame = ({ width, height, src, ...props }: IFrameProps) => {
   if (src.indexOf("youtube") !== -1 && width && height) {
     return (
-      <Box maxWidth={`${width}px`} maxHeight={`${height}px`}>
+      <Box
+        maxWidth={`${width}px`}
+        maxHeight={`${height}px`}
+        mb={["8px", "12px"]}
+      >
         <Box
           width="100%"
           pb={`${(parseInt(height, 10) / parseInt(width, 10)) * 100}%`}
           position="relative"
-          mb={3}
         >
           <Box
             as="iframe"
@@ -33,7 +36,16 @@ const IFrame = ({ width, height, src, ...props }: IFrameProps) => {
     );
   }
 
-  return <Box as="iframe" width={width} height={height} src={src} {...props} />;
+  return (
+    <Box
+      as="iframe"
+      mb={["8px", "12px"]}
+      width={width}
+      height={height}
+      src={src}
+      {...props}
+    />
+  );
 };
 
 export default IFrame;
