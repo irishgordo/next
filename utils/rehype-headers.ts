@@ -1,36 +1,13 @@
 /* inspired by docusaurus-mdx-loader */
 
 import { Transformer } from "unified";
-import { Element, Root } from "hast";
+import { Element } from "hast";
 import visit from "unist-util-visit";
 import rank from "hast-util-heading-rank";
 import toString from "hast-util-to-string";
-import stringifyObject from "stringify-object";
-import { MdxhastRootNode } from "./unist-types";
-
-export interface HeaderMeta {
-  rank: number;
-  id: string;
-  title: string;
-}
-
-const addExportNode = (
-  { children }: MdxhastRootNode,
-  headers: HeaderMeta[],
-  name: string
-) => {
-  const lastImportIndex = children
-    .map(({ type }) => type)
-    .lastIndexOf("import");
-
-  const targetIndex = lastImportIndex !== -1 ? 0 : lastImportIndex + 1;
-
-  children.splice(targetIndex, 0, {
-    default: false,
-    type: "export",
-    value: `export const ${name} = ${stringifyObject(headers)};`,
-  });
-};
+import createMdxjsEsmNode from "./create-mdxjsesm-node";
+import { MdxastNode } from "./unist-types";
+import { Value } from "estree-util-value-to-estree";
 
 interface RehypeHeadersOptions {
   name?: string;
@@ -41,8 +18,8 @@ export default function rehypeHeaders({
   name = "tableOfConents",
   maxLevel,
 }: RehypeHeadersOptions): Transformer {
-  return (root: Root) => {
-    const headers: HeaderMeta[] = [];
+  return (root: MdxastNode) => {
+    const headers: Value[] = [];
 
     visit<Element>(root, "element", function (node) {
       if (rank(node) && rank(node) <= maxLevel) {
@@ -54,6 +31,6 @@ export default function rehypeHeaders({
       }
     });
 
-    addExportNode(root, headers, name);
+    root.children.unshift(createMdxjsEsmNode(name, headers));
   };
 }
