@@ -8,6 +8,8 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkImportFrontmatter from "./remark-import-frontmatter";
 import rehypeHighlight from "rehype-highlight";
 import remarkCopyLinkedFiles from "remark-copy-linked-files";
+import remarkVariables from "./remark-variables";
+import remarkGFM from "remark-gfm";
 
 const destinationDir = join(process.cwd(), "public/static/assets");
 const staticPath = "/static/assets/";
@@ -19,6 +21,8 @@ interface Plugins {
 
 const plugins: Plugins = {
   remarkPlugins: [
+    remarkVariables,
+    remarkGFM,
     remarkFrontmatter,
     remarkImportFrontmatter,
     [

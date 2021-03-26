@@ -19,7 +19,7 @@
     "lint-check": "yarn base:eslint && yarn base:prettier --check",
     "typecheck": "tsc --noEmit --skipLibCheck --incremental --tsBuildInfoFile node_modules/.cache/tsc/tsbuildinfo --project .",
     "postinstall": "patch-package",
-    "markdown-lint": "remark 'content/**/docs/pages/**/*.mdx'",
+    "markdown-lint": "remark 'content/**/docs/pages/**/*.mdx' --frail",
     "markdown-lint-external-links": "WITH_EXTERNAL_LINKS=true yarn markdown-lint",
     "markdown-fix": "FIX=true yarn markdown-lint -o"
   },
@@ -94,6 +94,7 @@
     "remark-cli": "9.0.0",
     "remark-copy-linked-files": "^1.2.0",
     "remark-frontmatter": "^3.0.0",
+    "remark-gfm": "^1.0.0",
     "remark-lint-no-dead-urls": "^1.1.0",
     "remark-mdx": "^2.0.0-next.9",
     "remark-preset-lint-markdown-style-guide": "^4.0.0",

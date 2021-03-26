@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import template from "./template";
+import resolveIncludes from "./resolve-includes";
 import { loadDocsConfig, loadSiteConfig } from "./config";
 
 const { versions, latest, branches } = loadSiteConfig();
@@ -13,20 +13,24 @@ export const getVersion = (filepath: string) => {
 
 interface ParseMdxContentProps {
   content: string;
-  filepath: string;
+  filePath: string;
 }
 
 export const parseMdxContent = ({
   content: originalContent,
-  filepath,
+  filePath,
 }: ParseMdxContentProps) => {
-  const current = getVersion(filepath);
-  const { navigation, variables } = loadDocsConfig(current);
+  const current = getVersion(filePath);
+  const { navigation } = loadDocsConfig(current);
   const root = resolve(`content/${current}`);
-  const content = template(originalContent, root, variables);
+  const content = resolveIncludes({
+    value: originalContent,
+    rootDir: root,
+    filePath,
+  });
 
   const githubUrl = branches[current]
-    ? filepath.replace(
+    ? filePath.replace(
         root,
         `${NEXT_PUBLIC_GITHUB_DOCS}/edit/${branches[current]}`
       )

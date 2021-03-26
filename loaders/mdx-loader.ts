@@ -27,15 +27,15 @@ export default Wrapper;
 `;
 
 module.exports = async function (originalContent: string) {
-  const filepath = this.resourcePath;
+  const filePath = this.resourcePath;
   const callback = this.async();
   const options = Object.assign({}, getOptions(this), {
-    filepath,
+    filepath: filePath,
     skipExport: true,
   });
 
   const { content, navigation, versions, githubUrl } = parseMdxContent({
-    filepath,
+    filePath,
     content: originalContent,
   });
 
