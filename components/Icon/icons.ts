@@ -25,3 +25,4 @@ export { ReactComponent as presentation } from "./svg/presentation.svg";
 export { ReactComponent as stack } from "./svg/stack.svg";
 export { ReactComponent as question } from "./svg/question.svg";
 export { ReactComponent as window } from "./svg/window.svg";
+export { ReactComponent as lock } from "./svg/lock.svg";
