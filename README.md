@@ -4,7 +4,7 @@
 
 **Node.js 12+ is installed in the system.**
 
-If you don't have Node.js installed, ir it's version is smaller than 12, then follow
+If you don't have Node.js installed, or it's version is smaller than 12, then follow
 [this guide](https://nodejs.org/en/download/package-manager/) to install it.
 
 **`yarn` is installed in the system as a package manager.**
@@ -25,7 +25,7 @@ git clone git@github.com:gravitational/next.git
 git submodule init
 ```
 
-To update docs to the latest version form master run:
+To update docs to the latest version from master run:
 
 ```
 yarn git-update
@@ -62,7 +62,7 @@ Now run one of the following commands:
 
 File that configures build options:
 
-`versions` - array of the available options, should match the names of the folders inside `content` dir. Will be shouwn in the version select in the inverted order.
+`versions` - array of the available options, should match the names of the folders inside `content` dir. Will be shown in the version select in the inverted order.
 
 Format of version entry:
 
@@ -74,7 +74,7 @@ Format of version entry:
 
 ### Docs folders structure
 
-`content/*.*/docs` - is a docs folder. Inside of it we have docs for diffrent teleport version with the following structure:
+`content/*.*/docs` - is a docs folder. Inside of it we have docs for different Teleport version with the following structure:
 
 - `img/` - folder for images used inside the pages.
 - `pages/` - `.md` or `.mdx` files with actual page content. Every file in this folder will be rendered as a page.
